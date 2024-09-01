@@ -1,23 +1,39 @@
-import AddTodoForm from "../components/AddTodoForm";
+import TodoList from "../components/TodoList";
 import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-test("renders AddTodoForm component", () => {
-  render(<AddTodoForm />);
+test("renders TodoList component with demo todos", () => {
+  const todos = [
+    { id: 1, title: "Lorem ipsum", completed: false },
+    { id: 2, title: "dolor sit amet", completed: false },
+  ];
+  render(<TodoList todos={todos} />);
+  expect(screen.getByText("Lorem ipsum")).toBeInTheDocument();
+  expect(screen.getByText("dolor sit amet")).toBeInTheDocument();
 });
 
-test("add a new todo", () => {
-  const todos = [];
+test("toggling todos", () => {
+  const todos = [{ id: 1, title: "Lorem ipsum", completed: false }];
   const setTodos = jest.fn();
 
-  render(<AddTodoForm todos={todos} setTodos={setTodos} />);
+  render(<TodoList todos={todos} setTodos={setTodos} />);
 
-  const input = screen.getByPlaceholderText("Todo");
-  fireEvent.change(input, { target: { value: "New Todo" } });
-
-  const addButton = screen.getByText("Add Todo");
-  fireEvent.click(addButton);
+  const toggle = screen.getByRole("checkbox");
+  fireEvent.click(toggle);
 
   expect(setTodos).toBeCalledWith([
-    expect.objectContaining({ title: "New Todo" }),
+    expect.objectContaining({ completed: true }),
   ]);
+});
+
+test("deleting todos", () => {
+  const todos = [{ id: 1, title: "Lorem ipsum", completed: false }];
+  const setTodos = jest.fn();
+
+  render(<TodoList todos={todos} setTodos={setTodos} />);
+
+  const deleteButton = screen.getByText("Delete");
+  fireEvent.click(deleteButton);
+
+  expect(setTodos).toBeCalledWith([]); //after deletion it should be an empty array
 });
