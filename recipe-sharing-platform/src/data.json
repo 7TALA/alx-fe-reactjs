@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "title": "Spaghetti Carbonara",
+      "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+      "image": "https://via.placeholder.com/150",
+      "ingredients": "spaghetti & cream cheese",
+      "instructions": "mix cooked pasta with cream cheese"
+    },
+    {
+      "id": 2,
+      "title": "Chicken Tikka Masala",
+      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+      "image": "https://via.placeholder.com/150",
+      "ingredients": "chicken, onion, tomatoes",
+      "instructions": "diced chicken breast cooked in gravy"
+    },
+    {
+        "id": 3,
+        "title": "Fried Rice",
+        "summary": "Quick, easy, and delicious way to use any leftover vegetables and rice",
+        "image": "https://via.placeholder.com/150",
+        "ingredients": "frozen rice, any vegies of choice, soy sauce, eggs",
+        "instructions": "mix cooked rice with steamed vegetables add soy sauce and fried eggs"
+      }
+  ]
